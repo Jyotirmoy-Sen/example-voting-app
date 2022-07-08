@@ -2,4 +2,4 @@
 
   * Build Status [![Build Status](http://34.82.89.17:8080/buildStatus/icon?job=instavote%2Fworker-build&subject=Duration%20${duration})](http://34.82.89.17:8080/job/instavote/job/worker-build/)
   * Test Status [![Build Status](http://34.82.89.17:8080/buildStatus/icon?job=instavote%2Fworker-test&subject=Duration%20${duration})](http://34.82.89.17:8080/job/instavote/job/worker-test/)
-  * Packaging Status [![Build Status](http://34.82.89.17:8080/buildStatus/icon?job=instavote%2Fworker-package&subject=Duration%20{duration})](http://34.82.89.17:8080/job/instavote/job/worker-package/)
+  * Packaging Status [![Build Status](http://34.82.89.17:8080/buildStatus/icon?job=instavote%2Fworker-package&subject=Duration%20${duration})](http://34.82.89.17:8080/job/instavote/job/worker-package/)
