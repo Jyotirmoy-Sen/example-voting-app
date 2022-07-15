@@ -19,7 +19,7 @@ pipeline {
         }
         stage ('worker-test') {
             when {
-                chagneset '**/worker/**'
+                changeset '**/worker/**'
             }
             steps {
                 echo 'Running Unit Tests on worker app'
