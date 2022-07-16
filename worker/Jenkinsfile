@@ -45,10 +45,10 @@ pipeline {
     
     post {
         failure {
-            slackSend (channel: "instavote-cd", color: "danger", message: "Build Succeded - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+            slackSend (channel: "instavote-cd", color: "danger", message: "${env.JOB_NAME} >> ${env.BRANCH_NAME} branch -- # ${env.BUILD_NUMBER} succeeded after ${currentBuild.duration} millisec (<${env.BUILD_URL}|Open>)")
         }
         success {
-            slackSend (channel: "instavote-cd", color: "success", message: "Build Failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+            slackSend (channel: "instavote-cd", color: "success", message: "${env.JOB_NAME} >> ${env.BRANCH_NAME} branch -- # ${env.BUILD_NUMBER} succeeded after ${currentBuild.duration} millisec (<${env.BUILD_URL}|Open>)")
         }
         always {
             echo 'Pipeline for worker is complete..'
