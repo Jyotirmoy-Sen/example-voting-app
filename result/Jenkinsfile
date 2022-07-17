@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+
+    tools {
+        node 'NodeJS 8.9.0'
+    }
+
+    stages {
+        stage ('build') {
+            when {
+                changeset '**/result/**'
+            }
+            steps {
+                dir('result') {
+                    echo 'Building result app'
+                    sh 'npm install'
+                    sh 'npm ls'
+                }
+            }
+        }
+        stage ('test') {
+            when {
+                changeset '**/result/**'
+            }
+            steps {
+                dir ('result') {
+                    echo 'Testing result app'
+                    sh 'npm test'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline for result app is complete..'
+        }
+        success {
+            slackSend (channel: "instavote-cd", message: "${env.JOB_NAME} >> branch ${env.BRANCH_NAME} -- #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+        }
+        failure {
+            slackSend (channel: "instavote-cd", color: "danger", message: "${env.JOB_NAME} >> branch ${env.BRANCH_NAME} -- #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+        }
+    }
+}
