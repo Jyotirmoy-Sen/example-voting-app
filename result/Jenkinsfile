@@ -36,10 +36,10 @@ pipeline {
             echo 'Pipeline for result app is complete..'
         }
         success {
-            slackSend (channel: "instavote-cd", color: "success", message: "${env.JOB_NAME} >> branch ${env.BRANCH_NAME} -- #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+            slackSend (channel: "instavote-cd", color: "success", message: "${env.JOB_NAME} >> branch ${env.BRANCH_NAME} -- #${env.BUILD_NUMBER}  succeeded after ${currentBuild.duration} millisec (<${env.BUILD_URL}|Open>)")
         }
         failure {
-            slackSend (channel: "instavote-cd", color: "danger", message: "${env.JOB_NAME} >> branch ${env.BRANCH_NAME} -- #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+            slackSend (channel: "instavote-cd", color: "danger", message: "${env.JOB_NAME} >> branch ${env.BRANCH_NAME} -- #${env.BUILD_NUMBER}  failed after ${currentBuild.duration} millisec(<${env.BUILD_URL}|Open>)")
         }
     }
 }
